@@ -1,11 +1,23 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  --dark-moss-green: #606c38ff;
+  --pakistan-green: #283618ff;
+  --cornsilk: #fefae0ff;
+  --earth-yellow: #dda15eff;
+  --tigers-eye: #bc6c25ff;
+
+  --primary: var(--dark-moss-green);
+  --bg: var(--pakistan-green);
+  --text: var(--cornsilk);
+  --accent-1: var(--earth-yellow);
+  --accent-2: var(--tigers-eye);
+
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--text);
+  background-color: var(--bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,55 +26,149 @@
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  font-weight: 600;
+  color: var(--accent-1);
+  text-decoration: none;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--accent-2);
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.2;
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+  padding: 0.7em 1.1em;
+  font-size: 1rem;
+  font-weight: 600;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--primary);
+  color: var(--text);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: transform 0.08s ease, opacity 0.2s ease;
 }
 button:hover {
-  border-color: #646cff;
+  opacity: 0.95;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Layout helpers */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+.brand-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.nav-links {
+  display: flex;
+  gap: 14px;
+}
+.nav-links a {
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.nav-links a.active {
+  background: rgba(255,255,255,0.08);
+}
+
+main {
+  padding: 16px;
+}
+
+.grid-two {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 720px) {
+  .grid-two {
+    grid-template-columns: 1fr 1fr;
   }
-  a:hover {
-    color: #747bff;
+}
+
+.card {
+  background: rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.muted {
+  color: rgba(255,255,255,0.8);
+}
+
+/* Poem styling */
+.poem {
+  white-space: pre-wrap;
+  font-size: clamp(1rem, 2.8vw, 1.125rem);
+  line-height: 1.9;
+  padding: 24px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.08));
+  border-left: 4px solid var(--primary);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.poem::first-line {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+.poem p {
+  margin: 0;
+}
+.poem .stanza {
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeInUp 500ms ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.99);
   }
-  button {
-    background-color: #f9f9f9;
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
