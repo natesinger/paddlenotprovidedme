@@ -40,6 +40,105 @@ body {
   min-height: 100vh;
 }
 
+/* Bands and separators */
+.about-hero {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 45vw, 520px);
+  overflow: hidden;
+}
+.about-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+.about-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25));
+}
+.about-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  padding-bottom: 10vh;
+}
+
+.seam {
+  position: relative;
+  height: 80px;
+  line-height: 0;
+  pointer-events: none;
+}
+.seam svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.seam-wave path { fill: #25361e; }
+.seam-treeline path { fill: #1f2d18; }
+
+.band {
+  width: 100%;
+  padding: 24px 0 28px;
+  position: relative;
+}
+.band-forest {
+  --band-bg: #25361e; /* slightly lighter than body bg */
+  background: var(--band-bg);
+  color: var(--text);
+}
+.band-camp {
+  --band-bg: #1f2d18; /* slightly darker than body bg */
+  background: var(--band-bg);
+  color: var(--text);
+}
+/* Make the wave color match the band it belongs to */
+.band-forest > .seam { color: var(--band-bg); transform: translateY(-1px); }
+.band-camp > .seam { color: var(--band-bg); transform: translateY(-1px); }
+
+/* Footer */
+.site-footer {
+  background: #1a2613; /* distinct from band-camp */
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 48px;
+}
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 40px 16px 36px;
+  text-align: center;
+}
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.site-footer nav a {
+  color: rgba(255,255,255,0.72);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.site-footer nav a:hover {
+  color: var(--accent-1);
+}
+.copyright {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.9rem;
+}
+
 h1 {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   line-height: 1.2;
@@ -115,6 +214,51 @@ button:focus-visible {
 
 main {
   padding: 16px;
+}
+
+.section {
+  margin: 24px 0;
+}
+.section h2 {
+  margin: 0 0 8px 0;
+}
+.people .card img {
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+.people .card h2 {
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.callout {
+  position: relative;
+  margin: 16px 0 24px;
+  padding: 18px 18px 12px 18px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.10));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-left-width: 4px;
+  border-left-color: var(--accent-1);
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+.callout h2 {
+  margin: 0 0 8px 0;
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+}
+.callout-tags {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  padding: 0;
+  margin: 12px 0 0 0;
+}
+.callout-tags li {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
 }
 
 .grid-two {
