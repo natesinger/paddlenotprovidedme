@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { PageLayout } from "../components/PageLayout";
 
 export function PoemPage() {
-  const poem = useMemo(() => `To shoot a Moose in the Rain
+  const poem = useMemo(() => `To Shoot a Moose in the Rain
 
 I would shoot a moose in the rain 
 
@@ -80,16 +80,40 @@ by Eli Carmer and Jw Harriman`, []);
     <PageLayout title="Poem" ariaLabel="Poem">
       <section className="band band-forest" role="region" aria-label="Poem">
         <div className="about-hero-inner container">
-          <h1 className="about-title">Poem</h1>
+          <h1 className="page-title">Poem</h1>
         </div>
         <div className="container" style={{ marginTop: "-25px" }}>
-          <div className="poem">
-            {stanzas.map((stanza, idx) => (
-              <div key={idx} className="stanza">
-                {stanza}
-              </div>
-            ))}
-          </div>
+          {stanzas.map((stanza, idx) => {
+            if (idx === 0) {
+              // Title - make it stand out
+              return (
+                <h2 key={idx} className="section-header" style={{ textAlign: "center" }}>
+                  {stanza}
+                </h2>
+              );
+            } else if (idx === stanzas.length - 1) {
+              // Signature - make it stand out
+              return (
+                <p key={idx} style={{ 
+                  marginTop: "40px", 
+                  marginBottom: "0", 
+                  textAlign: "center", 
+                  fontStyle: "italic",
+                  color: "var(--accent-2)",
+                  fontSize: "1.1rem"
+                }}>
+                  {stanza}
+                </p>
+              );
+            } else {
+              // Regular stanzas
+              return (
+                <p key={idx} style={{ marginBottom: "24px", whiteSpace: "pre-line", textAlign: "center" }}>
+                  {stanza}
+                </p>
+              );
+            }
+          })}
         </div>
       </section>
     </PageLayout>

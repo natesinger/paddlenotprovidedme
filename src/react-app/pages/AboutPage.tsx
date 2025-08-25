@@ -1,15 +1,16 @@
 import React from "react";
 import { PageLayout } from "../components/PageLayout";
+import { Seam } from "../components/Seam";
 
 export function AboutPage() {
   return (
     <PageLayout title="About Us" ariaLabel="Up Shit Creek Guide Service">
       <section className="band band-forest" role="region" aria-label="Site information">
         <div className="about-hero-inner container">
-          <h1 className="about-title" style={{ marginTop: "-5px" }}>About Us</h1>
+          <h1 className="page-title">About Us</h1>
         </div>
         <div className="container" style={{ marginTop: "-25px" }}>
-          <h2>What is this site?</h2>
+          <h2 className="section-header">What is this site?</h2>
           <p>
             This is an insider-only guide for the Up Shit Creek Guide Service. Translation:
             it's not a real booking website—it's our private playground to try ideas, tell tall tales,
@@ -23,13 +24,11 @@ export function AboutPage() {
         </div>
       </section>
 
-      <div className="seam seam-forestline" aria-hidden="true">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 90 C 120 70 180 90 260 70 C 340 50 420 100 520 80 C 640 55 720 100 840 78 C 920 65 1020 95 1120 72 C 1220 50 1320 88 1440 70 L1440 120 L0 120 Z" /></svg>
-      </div>
+      <Seam type="forestline" />
 
       <section className="band band-camp" role="region" aria-label="The people involved">
         <div className="container">
-          <h2>Who's behind this outfit?</h2>
+          <h2 className="section-header">Who's behind this outfit?</h2>
           <p className="muted" style={{ marginTop: 4, marginBottom: 50 }}>Meet the crew. Equal parts competent and ridiculous.</p>
           <div className="grid-two">
             <div className="card">
