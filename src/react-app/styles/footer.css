@@ -2,7 +2,6 @@
 .site-footer {
   background-color: #1a2613 !important; /* ensure footer background consistency */
   margin-top: 48px;
-  padding-top: 20px;
 }
 
 .footer-inner {
@@ -10,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding: 80px 16px 60px;
+  padding: 20px;
 }
 
 .site-footer nav {

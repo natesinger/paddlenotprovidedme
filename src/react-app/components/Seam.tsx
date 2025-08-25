@@ -1,5 +1,3 @@
-import React from "react";
-
 interface SeamProps {
   type: "treeline" | "forestline";
   variant?: number;

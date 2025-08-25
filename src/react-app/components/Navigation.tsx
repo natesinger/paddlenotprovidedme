@@ -1,10 +1,6 @@
-import React from "react";
-
-type RoutePath = "/" | "/about" | "/poem" | "/menu";
-
 interface NavigationProps {
-  current: RoutePath;
-  onNavigate: (to: RoutePath) => void;
+  current: string;
+  onNavigate: (to: string) => void;
 }
 
 export function Navigation({ current, onNavigate }: NavigationProps) {

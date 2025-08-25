@@ -1,8 +1,7 @@
-import React, { useMemo } from "react";
 import { PageLayout } from "../components/PageLayout";
 
 export function PoemPage() {
-  const poem = useMemo(() => `To Shoot a Moose in the Rain
+  const poem = `To Shoot a Moose in the Rain
 
 I would shoot a moose in the rain 
 
@@ -72,9 +71,9 @@ We shot a moose in the rain
 
 
 
-by Eli Carmer and Jw Harriman`, []);
+by Eli Carmer and Jw Harriman`;
   
-  const stanzas = useMemo(() => poem.split(/\n\s*\n/), [poem]);
+  const stanzas = poem.split(/\n\s*\n/);
   
   return (
     <PageLayout title="Poem" ariaLabel="Poem">

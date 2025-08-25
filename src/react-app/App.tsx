@@ -1,5 +1,5 @@
 // src/App.tsx
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import "./App.css";
 import { PoemPage } from "./pages/PoemPage";
 import { MenuPage } from "./pages/MenuPage";

@@ -1,4 +1,3 @@
-import React from "react";
 import { PageLayout } from "../components/PageLayout";
 import { Seam } from "../components/Seam";
 
@@ -10,7 +9,7 @@ export function AboutPage() {
           <h1 className="page-title">About Us</h1>
         </div>
         <div className="container" style={{ marginTop: "-25px" }}>
-          <h2 className="section-header">What is this site?</h2>
+          <h2 className="section-header">What is this?</h2>
           <p>
             This is an insider-only guide for the Up Shit Creek Guide Service. Translation:
             it's not a real booking website—it's our private playground to try ideas, tell tall tales,
@@ -24,7 +23,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      <Seam type="forestline" />
+      <Seam type="forestline" variant={0} />
 
       <section className="band band-camp" role="region" aria-label="The people involved">
         <div className="container">
