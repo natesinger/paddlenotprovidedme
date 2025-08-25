@@ -31,8 +31,11 @@ function Nav({ current, onNavigate }: { current: RoutePath; onNavigate: (to: Rou
       <div className="nav-inner">
         <div className="brand" onClick={() => onNavigate("/about")} role="button" aria-label="Go to About" tabIndex={0}
           onKeyDown={(e) => { if (e.key === "Enter") onNavigate("/about"); }}>
-          <img src="/uscgs.png" alt="USCGS icon" className="brand-badge" />
-          <span>Up Shit Creek Guide Service</span>
+          <img src="/icon.png" alt="USCGS icon" className="brand-badge" />
+          <span>
+            <span className="desktop-only">Up Shit Creek Guide Service</span>
+            <span className="mobile-only">USCGS</span>
+          </span>
         </div>
         <div className="nav-links">
           <a href="/about" onClick={(e) => { e.preventDefault(); onNavigate("/about"); }} className={current === "/about" ? "active" : ""}>About</a>
@@ -47,20 +50,27 @@ function Nav({ current, onNavigate }: { current: RoutePath; onNavigate: (to: Rou
 function AboutPage() {
   return (
     <>
-      <header className="about-hero" role="banner" aria-label="Up Shit Creek Guide Service">
+      <header
+        className="about-hero"
+        role="banner"
+        aria-label="Up Shit Creek Guide Service"
+      >
         <img className="about-hero-img" src="/banner.jpg" alt="" aria-hidden="true" />
         <div className="about-hero-shade" />
-        <div className="about-hero-inner container">
-          <h1>About Us</h1>
-          <p className="muted">Northern Maine vibes. Coffee strong enough to fix a leaky canoe.</p>
+        <div className="seam seam-hero" aria-hidden="true">
+          <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path d="M0 120 L0 75 Q180 55 360 75 T720 75 T1080 75 T1440 75 L1440 120 Z" />
+          </svg>
         </div>
       </header>
+      
       <section className="band band-forest" role="region" aria-label="Site information">
-        <div className="seam seam-wave" aria-hidden="true">
-          <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,64 C 240,96 480,0 720,32 C 960,64 1200,128 1440,96 L1440,0 L0,0 Z" /></svg>
+
+        <div className="about-hero-inner container">
+          <h1 className="about-title" style={{ marginTop: "-5px" }}>About Us</h1>
         </div>
-        <div className="container">
-          <section className="callout" role="note" aria-label="What is this site?">
+        <div className="container" style={{ marginTop: "-25px" }}>
+
             <h2>What is this site?</h2>
             <p>
               This is an insider-only guide for the Up Shit Creek Guide Service. Translation:
@@ -72,31 +82,27 @@ function AboutPage() {
               For internal use only. Please don’t share publicly. If you stumbled in from the big internet,
               pretend you saw a moose and back away slowly.
             </p>
-            <ul className="callout-tags" aria-label="Disclaimers and context">
-              <li>Insiders only</li>
-              <li>Not a real guide service</li>
-              <li>Northern Maine vibes</li>
-            </ul>
-          </section>
+
         </div>
       </section>
 
+      <div className="seam seam-treeline" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 90 C 120 70 180 90 260 70 C 340 50 420 100 520 80 C 640 55 720 100 840 78 C 920 65 1020 95 1120 72 C 1220 50 1320 88 1440 70 L1440 120 L0 120 Z" /></svg>
+      </div>
+
       <section className="band band-camp" role="region" aria-label="The people involved">
-        <div className="seam seam-treeline" aria-hidden="true">
-          <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 90 C 120 70 180 90 260 70 C 340 50 420 100 520 80 C 640 55 720 100 840 78 C 920 65 1020 95 1120 72 C 1220 50 1320 88 1440 70 L1440 120 L0 120 Z" /></svg>
-        </div>
         <div className="container">
           <h2>Who’s behind this outfit?</h2>
-          <p className="muted" style={{ marginTop: 4, marginBottom: 12 }}>Meet the crew. Equal parts competent and ridiculous.</p>
+          <p className="muted" style={{ marginTop: 4, marginBottom: 50 }}>Meet the crew. Equal parts competent and ridiculous.</p>
           <div className="grid-two">
             <div className="card">
-              <img src="/jw-min.jpg" alt="JW Harriman" style={{ width: "100%", borderRadius: 12 }} />
-              <h2>JW Harriman</h2>
+              <img src="/jw-min.jpg" alt="Jw" style={{ width: "100%", borderRadius: 12 }} />
+              <h2>Jw</h2>
               <p className="muted">JW grew up where dirt roads end and rumors begin. He tracks by scent, cooks by instinct, and can rebuild an outboard from parts he hasn’t found yet. Folks say he laughs like a chainsaw starting on the second pull, and a crow once taught him knot‑tying. We didn’t believe it either—until the crow asked for a raise.</p>
             </div>
             <div className="card">
-              <img src="/eli-min.jpg" alt="Eli Carmer" style={{ width: "100%", borderRadius: 12 }} />
-              <h2>Eli Carmer</h2>
+              <img src="/eli-min.jpg" alt="Eli" style={{ width: "100%", borderRadius: 12 }} />
+              <h2>Eli</h2>
               <p className="muted">Raised on a diet of spruce tips and questionable advice, Eli once navigated a fog bank by listening for loons in D minor. He’s our map‑whisperer, amateur meteorologist, and the only person we trust to brew coffee strong enough to double as boat epoxy. On off days he practices moose diplomacy and writes sternly worded letters to rain clouds.</p>
             </div>
             <div className="card">

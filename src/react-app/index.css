@@ -67,7 +67,7 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   height: 100%;
-  padding-bottom: 10vh;
+  padding-bottom: 2vh;
 }
 
 .seam {
@@ -75,6 +75,8 @@ body {
   height: 80px;
   line-height: 0;
   pointer-events: none;
+  margin-top: -40px; /* overlap the previous section */
+  z-index: 1;
 }
 .seam svg {
   position: absolute;
@@ -83,8 +85,38 @@ body {
   height: 100%;
   display: block;
 }
-.seam-wave path { fill: #25361e; }
-.seam-treeline path { fill: #1f2d18; }
+
+/* First seam: between hero and band-forest */
+.seam-wave {
+  background: rgba(0,0,0,0.25); /* matches the bottom of hero shade */
+}
+.seam-wave path { 
+  fill: #25361e; /* color of band-forest below */
+}
+
+/* Second seam: between band-forest and band-camp */
+.seam-treeline {
+  background: #25361e; /* matches the background of band-forest above */
+}
+.seam-treeline path { 
+  fill: #1f2d18; /* color of band-camp below */
+}
+
+/* Hero seam: at the bottom of the hero section */
+.seam-hero {
+  background: transparent; /* transparent to show header image */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 80px;
+  line-height: 0;
+  pointer-events: none;
+}
+.seam-hero path { 
+  fill: #25361e; /* color of band-forest below */
+}
 
 .band {
   width: 100%;
@@ -95,53 +127,120 @@ body {
   --band-bg: #25361e; /* slightly lighter than body bg */
   background: var(--band-bg);
   color: var(--text);
+  margin-top: -20px; /* pull up to overlap with seam above */
+  padding-top: 24px; /* compensate for the overlap */
 }
 .band-camp {
   --band-bg: #1f2d18; /* slightly darker than body bg */
   background: var(--band-bg);
   color: var(--text);
+  margin-top: -40px; /* pull up to overlap with seam above */
+  padding-top: 44px; /* compensate for the overlap */
 }
-/* Make the wave color match the band it belongs to */
-.band-forest > .seam { color: var(--band-bg); transform: translateY(-1px); }
-.band-camp > .seam { color: var(--band-bg); transform: translateY(-1px); }
+/* Remove the old band > seam rules since seams are now siblings */
 
 /* Footer */
 .site-footer {
   background: #1a2613; /* distinct from band-camp */
   border-top: 1px solid rgba(255,255,255,0.08);
-  margin-top: 48px;
+  padding-top: 20px;
+
 }
 .footer-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  padding: 40px 16px 36px;
+  gap: 20px;
+  padding: 80px 16px 60px;
   text-align: center;
 }
 .site-footer nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .site-footer nav a {
-  color: rgba(255,255,255,0.72);
-  font-weight: 600;
-  font-size: 0.95rem;
+  color: rgba(255,255,255,0.5);
+  font-weight: 500;
+  font-size: 0.9rem;
 }
 .site-footer nav a:hover {
-  color: var(--accent-1);
+  color: rgba(255,255,255,0.7);
 }
 .copyright {
-  color: rgba(255,255,255,0.6);
-  font-size: 0.9rem;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+/* Overscroll behavior and colors */
+html {
+  overscroll-behavior: none; /* disable top overscroll */
+  background-color: var(--bg); /* match header/nav background */
+}
+
+body {
+  overscroll-behavior: none; /* disable top overscroll */
+  background-color: var(--bg); /* match header/nav background */
+}
+
+/* Top overscroll matches header/nav, bottom overscroll matches footer */
+.about-hero {
+  background-color: var(--bg); /* ensure header background consistency */
+}
+
+.nav {
+  background-color: var(--bg) !important; /* ensure nav background consistency */
+}
+
+/* Bottom overscroll area matches footer */
+.site-footer {
+  background-color: #1a2613 !important; /* ensure footer background consistency */
+}
+
+/* Create a pseudo-element for bottom overscroll area */
+.site-footer::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: #1a2613;
+  pointer-events: none;
+  z-index: -1;
 }
 
 h1 {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   line-height: 1.2;
+}
+
+/* Responsive title display */
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: inline;
+  }
+  
+  .desktop-only {
+    display: none;
+  }
+  
+  /* Make mobile USCGS text larger in navigation */
+  .brand .mobile-only {
+    font-size: 1.2rem;
+    font-weight: 900;
+  }
 }
 
 button {
@@ -172,9 +271,7 @@ button:focus-visible {
 }
 
 .nav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  position: relative;
   background: var(--bg);
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
