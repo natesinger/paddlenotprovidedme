@@ -1,0 +1,67 @@
+/* Cards */
+.card {
+  background: rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+/* Grid layouts */
+.grid-two {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 720px) {
+  .grid-two {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* People cards */
+.people .card img {
+  width: 100%;
+  border-radius: 12px;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.people .card h2 {
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+/* Callout styling */
+.callout {
+  position: relative;
+  margin: 16px 0 24px;
+  padding: 18px 18px 12px 18px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.10));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-left-width: 4px;
+  border-left-color: var(--accent-1);
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+.callout h2 {
+  margin: 0 0 8px 0;
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+}
+
+.callout-tags {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  padding: 0;
+  margin: 12px 0 0 0;
+}
+
+.callout-tags li {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+}

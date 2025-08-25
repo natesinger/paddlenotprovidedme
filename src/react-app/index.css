@@ -96,9 +96,17 @@ body {
 
 /* Second seam: between band-forest and band-camp */
 .seam-treeline {
-  background: #25361e; /* matches the background of band-forest above */
+  background: #1f2d18; /* matches the background of band-camp above */
 }
 .seam-treeline path { 
+  fill: #25361e; /* color of band-forest below */
+}
+
+/* Seam: between band-camp and band-forest (opposite direction) */
+.seam-forestline {
+  background: #25361e; /* matches the background of band-forest above */
+}
+.seam-forestline path { 
   fill: #1f2d18; /* color of band-camp below */
 }
 

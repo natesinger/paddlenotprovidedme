@@ -1,0 +1,67 @@
+/* Poem styling */
+.poem {
+  white-space: pre-wrap;
+  font-size: clamp(1rem, 2.8vw, 1.125rem);
+  line-height: 1.9;
+  padding: 24px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.08));
+  border-left: 4px solid var(--primary);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.poem-content {
+  white-space: pre-wrap;
+  font-size: clamp(1rem, 2.8vw, 1.125rem);
+  line-height: 1.9;
+  margin-top: -25px;
+}
+
+.poem-content .stanza {
+  margin-bottom: 32px;
+  padding: 20px;
+  background: rgba(0,0,0,0.12);
+  border-left: 3px solid var(--primary);
+  border-radius: 8px;
+  opacity: 0;
+  animation: fadeInUp 500ms ease forwards;
+}
+
+.poem-content .stanza:last-child {
+  margin-bottom: 0;
+}
+
+/* Poem page specific styling */
+.poem-content .stanza:first-child {
+  margin-top: 0;
+}
+
+.poem-content .stanza:nth-child(even) {
+  background: rgba(0,0,0,0.08);
+  border-left-color: var(--accent-1);
+}
+
+.poem::first-line {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.poem p {
+  margin: 0;
+}
+
+.poem .stanza {
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeInUp 500ms ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
